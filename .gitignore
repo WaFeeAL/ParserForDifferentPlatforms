@@ -154,4 +154,7 @@ fabric.properties
 Test/
 TestFinalVersion/
 Rawg-gameDB.rar
-rawg_game_data/*
+parsed_data/rawg/developers/*.txt
+parsed_data/rawg/games/*.txt
+Ready
+.idea
