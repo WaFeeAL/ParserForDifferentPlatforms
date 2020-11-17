@@ -1,12 +1,16 @@
 import json
 import time
 import requests
+import os
 
 # Last RAWG game page (13.11.2020). Determined manually
 LAST_RAWG_DEVELOPERS_PAGE = 21933
 
 
 def get_rawg_developers(start_page_number, file_number, STEP, rawg_key):
+    if not os.path.exists("parsed_data/rawg/developers/"):
+        os.mkdir("parsed_data/rawg/developers/")
+
     # Every request to RAWG API should have user-agent header with app name.
     # If we don't provide it, his may be ban our requests.(Ctrl + Shift + I, Network tab, Reload page, Pick longer line)
     header = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 " \

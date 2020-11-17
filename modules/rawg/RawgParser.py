@@ -1,4 +1,5 @@
 import json
+import os
 import time
 import requests
 
@@ -7,6 +8,8 @@ LAST_RAWG_GAME_PAGE = 23318
 
 
 def get_rawg(start_page_number, file_number, STEP, rawg_key):
+    if not os.path.exists("parsed_data/rawg/games/"):
+        os.mkdir("parsed_data/rawg/games/")
     # Every request to RAWG API should have user-agent header with app name.
     # If we don't provide it, his may be ban our requests.(Ctrl + Shift + I, Network tab, Reload page, Pick longer line)
     header = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.113 " \
@@ -18,13 +21,13 @@ def get_rawg(start_page_number, file_number, STEP, rawg_key):
     index = start_page_number
 
     # Create or re-create file and write '[' to maintain .json format.
-    f = open(rf"C:\Users\Herob\PycharmProjects\ParserForDifferentPlatforms\rawg_game_data\rawg_game_data_{file_number}.txt", "w",
+    f = open(rf"C:\Users\Herob\PycharmProjects\ParserForDifferentPlatforms\parsed_data\rawg\games\rawg_game_data_{file_number}.txt", "w",
              encoding="utf8")
     f.write('[')
     f.close()
 
     # Open the file for writing to the end.
-    f = open(rf"C:\Users\Herob\PycharmProjects\ParserForDifferentPlatforms\rawg_game_data\rawg_game_data_{file_number}.txt", "a",
+    f = open(rf"C:\Users\Herob\PycharmProjects\ParserForDifferentPlatforms\parsed_data\rawg\games\rawg_game_data_{file_number}.txt", "a",
              encoding="utf8")
 
     # A loop that checks whether the required interval has passed, or the last page.
