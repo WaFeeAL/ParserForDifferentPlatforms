@@ -15,7 +15,7 @@ if __name__ == '__main__':
     # Amount of threads :D
     amount_of_threads = 47
     # Your RAWG key
-    rawg_key = '21de55e5fa7f42e28f7c5696e7b110e0'
+    rawg_key = ''
 
     # Loop for RAWG
     for index in range(amount_of_threads):
